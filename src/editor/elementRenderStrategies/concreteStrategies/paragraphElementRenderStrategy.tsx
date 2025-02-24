@@ -1,9 +1,9 @@
 import React from 'react';
 import { RenderElementProps } from "slate-react";
 import { CSSProperties } from "react";
-import { RenderStrategy } from "./RenderStrategy";
+import { ElementRenderStrategy } from "../elementRenderStrategy";
 
-export class ParagraphElementStrategy implements RenderStrategy {
+export class ParagraphElementRenderStrategy implements ElementRenderStrategy {
   type = "paragraph";
   
   render(props: RenderElementProps): React.ReactElement {

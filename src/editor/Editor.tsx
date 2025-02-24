@@ -2,9 +2,9 @@ import { createEditor, Transforms, Editor as SlateEditor, Element as SlateElemen
 import { Editable, RenderElementProps, Slate, withReact } from "slate-react";
 import {  useCallback, useState } from "react";
 import { type CustomElement } from "./Editor.types"
-import { CodeElementStrategy } from "./strategies/CodeElementStrategy";
-import { ParagraphElementStrategy } from "./strategies/ParagraphElementStrategy";
-import { RenderStrategy } from "./strategies/RenderStrategy";
+import { CodeElementRenderStrategy } from "./elementRenderStrategies/concreteStrategies/codeElementRenderStrategy";
+import { ParagraphElementRenderStrategy } from "./elementRenderStrategies/concreteStrategies/paragraphElementRenderStrategy";
+import { ElementRenderStrategy } from "./elementRenderStrategies/elementRenderStrategy";
 
 const initialValue: Descendant[] = [
     {
@@ -16,14 +16,14 @@ const initialValue: Descendant[] = [
 export function Editor() {
     const [editor] = useState(() => withReact(createEditor()))
       
-    const strategies: RenderStrategy[] = [
-      new CodeElementStrategy(),
-      new ParagraphElementStrategy()
+    const strategies: ElementRenderStrategy[] = [
+      new CodeElementRenderStrategy(),
+      new ParagraphElementRenderStrategy()
     ];
       
     const renderElement = useCallback((props: RenderElementProps) => {
         const strategy = strategies.find(s => s.type === props.element.type) 
-          ?? new ParagraphElementStrategy();
+          ?? new ParagraphElementRenderStrategy();
         return strategy.render(props);
     }, []);
       

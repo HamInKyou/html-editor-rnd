@@ -1,8 +1,8 @@
 import { RenderElementProps } from "slate-react";
 import React, { CSSProperties } from "react";
-import { RenderStrategy } from "./RenderStrategy";
+import { ElementRenderStrategy } from "../elementRenderStrategy";
 
-export class CodeElementStrategy implements RenderStrategy {
+export class CodeElementRenderStrategy implements ElementRenderStrategy {
   type = "code";
   
   render(props: RenderElementProps): React.ReactElement {
