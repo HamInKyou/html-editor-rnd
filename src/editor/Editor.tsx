@@ -20,9 +20,15 @@ export function Editor() {
     const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
     const renderLeaf = useCallback((props: RenderLeafProps) => <Leaf {...props} />, [])
     
+    const COMMANDS = {
+      'toggle-code-block': new ToggleCodeBlockCommand(),
+      'toggle-bold': new ToggleBoldCommand()
+    }
+
     const HOTKEYS = {
-      'ctrl+`': new ToggleCodeBlockCommand(),
-      'ctrl+b': new ToggleBoldCommand()
+      'ctrl+`': COMMANDS['toggle-code-block'],
+      'ctrl+b': COMMANDS['toggle-bold'],
+      'meta+b': COMMANDS['toggle-bold']
     };
 
     const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLElement>) => {
