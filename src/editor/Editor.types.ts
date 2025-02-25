@@ -13,7 +13,7 @@ export type CustomElement = {
   children: CustomText[] 
 }
 
-export type CustomText = { text: string }
+export type CustomText = { text: string, bold?: boolean }
 
 declare module 'slate' {
   interface CustomTypes {
