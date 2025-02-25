@@ -1,7 +1,8 @@
 import React from 'react';
 import { RenderElementProps } from "slate-react";
+import { type EditorElementType } from "../Editor.types";
 
-export interface ElementRenderStrategy {
-  type: string;
-  render(props: RenderElementProps): React.ReactElement;
+export abstract class ElementRenderStrategy {
+  abstract type: EditorElementType;
+  abstract render(props: RenderElementProps): React.ReactElement;
 } 

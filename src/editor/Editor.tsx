@@ -15,17 +15,7 @@ const initialValue: Descendant[] = [
 
 export function Editor() {
     const [editor] = useState(() => withReact(createEditor()))
-      
-    const strategies: ElementRenderStrategy[] = [
-      new CodeElementRenderStrategy(),
-      new ParagraphElementRenderStrategy()
-    ];
-      
-    const renderElement = useCallback((props: RenderElementProps) => {
-        const strategy = strategies.find(s => s.type === props.element.type) 
-          ?? new ParagraphElementRenderStrategy();
-        return strategy.render(props);
-    }, []);
+    const renderElement = useCallback((props: RenderElementProps) => <Element {...props} />, [])
       
     return (
         <Slate editor={editor} initialValue={initialValue}>
@@ -50,3 +40,16 @@ export function Editor() {
       </Slate>
     )
 } 
+
+
+function Element(props: RenderElementProps){
+  const strategies: ElementRenderStrategy[] = [
+    new CodeElementRenderStrategy(),
+    new ParagraphElementRenderStrategy()
+  ];
+
+  const strategy = strategies.find(s => s.type === props.element.type) 
+    ?? new ParagraphElementRenderStrategy();
+    
+  return strategy.render(props);
+}

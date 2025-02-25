@@ -1,10 +1,11 @@
-import React from 'react';
+import React  from 'react';
 import { RenderElementProps } from "slate-react";
 import { CSSProperties } from "react";
 import { ElementRenderStrategy } from "../elementRenderStrategy";
+import { EDITOR_ELEMENT_TYPE, type EditorElementType} from "../../Editor.types";
 
-export class ParagraphElementRenderStrategy implements ElementRenderStrategy {
-  type = "paragraph";
+export class ParagraphElementRenderStrategy extends ElementRenderStrategy {
+  type: EditorElementType = EDITOR_ELEMENT_TYPE.PARAGRAPH;
   
   render(props: RenderElementProps): React.ReactElement {
     const style = {
