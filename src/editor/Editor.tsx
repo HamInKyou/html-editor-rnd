@@ -27,6 +27,7 @@ export function Editor() {
 
     const HOTKEYS = {
       'ctrl+`': COMMANDS['toggle-code-block'],
+      'meta+`': COMMANDS['toggle-code-block'],
       'ctrl+b': COMMANDS['toggle-bold'],
       'meta+b': COMMANDS['toggle-bold']
     };

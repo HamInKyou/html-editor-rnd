@@ -8,12 +8,22 @@ export const EDITOR_ELEMENT_TYPE = {
 
 export type EditorElementType = typeof EDITOR_ELEMENT_TYPE[keyof typeof EDITOR_ELEMENT_TYPE];
 
+export const EDITOR_MARK_TYPE = {
+  BOLD: 'bold'
+} as const;
+
+export type EditorMarkType = typeof EDITOR_MARK_TYPE[keyof typeof EDITOR_MARK_TYPE];
+
 export type CustomElement = { 
   type: EditorElementType;
-  children: CustomText[] 
+  children: CustomText[];
 }
 
-export type CustomText = { text: string, bold?: boolean }
+export type CustomText = {
+  text: string;
+} & {
+  [K in EditorMarkType]?: boolean;
+}
 
 declare module 'slate' {
   interface CustomTypes {
