@@ -1,0 +1,35 @@
+{
+    "env": {
+      "browser": true,        // 브라우저 환경 (DOM 전역변수 사용 가능)
+      "es2021": true,         // ES2021 문법 허용
+      "node": true            // Node.js 환경 전역변수/문법 허용
+    },
+    "parser": "@typescript-eslint/parser",   // TypeScript 파싱을 위한 ESLint 파서
+    "parserOptions": {
+      "ecmaVersion": 12,      // ES12(ES2021) 문법 파싱
+      "sourceType": "module", // import/export 모듈 사용
+      "ecmaFeatures": {
+        "jsx": true           // JSX 파싱 허용 (React 사용 시 필수)
+      }
+    },
+    "plugins": [
+      "react",                // React용 ESLint 플러그인 활성화
+      "@typescript-eslint"    // TypeScript용 ESLint 플러그인 활성화
+    ],
+    "extends": [
+      "eslint:recommended",            // 기본적인 자바스크립트 권장 규칙 세트
+      "plugin:react/recommended",      // React 권장 규칙 세트
+      "plugin:react-hooks/recommended",// React Hooks 권장 규칙 세트
+      "plugin:@typescript-eslint/recommended", // TypeScript 권장 규칙 세트
+      "prettier"                       // Prettier와 충돌하는 규칙 비활성화 (아래 6번 참조)
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"    // 설치된 React 버전에 맞게 자동으로 설정
+      }
+    },
+    "rules": {
+      // 프로젝트 팀 컨벤션에 따라 규칙 추가/Override 가능
+      // 예: "react/react-in-jsx-scope": "off"  (React 17+ JSX에 React 불필요)
+    } 
+}
